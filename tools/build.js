@@ -2,7 +2,10 @@ import fs from 'fs'
 import { execSync } from 'child_process'
 import prettyBytes from 'pretty-bytes'
 import { gzipSizeSync } from 'gzip-size'
-import pkg from '../package.json' assert { type: 'json' }
+import { createRequire } from 'module'
+
+const require = createRequire(import.meta.url)
+const pkg = require('../package.json')
 
 const exec = (command, extraEnv) => {
   execSync(command, {
