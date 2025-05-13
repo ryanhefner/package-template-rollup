@@ -13,3 +13,6 @@ umd
 
 # Misc
 .DS_Store
+
+# Dist
+dist/

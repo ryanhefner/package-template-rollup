@@ -10,26 +10,24 @@
   "license": "MIT",
   "type": "module",
   "files": [
-    "es",
+    "dist",
     "src",
-    "types",
-    "umd",
-    "index.js"
+    "types"
   ],
   "directories": {
     "lib": "/src"
   },
-  "main": "index.js",
-  "module": "es/index.js",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
   "jsnext:main": "src/index.js",
   "types": "types",
   "scripts": {
-    "clean": "rimraf index.js es umd",
-    "prebuild": "npm run clean",
-    "build": "node ./tools/build.js",
+    "clean": "rimraf dist",
+    "prebuild": "yarn clean",
+    "build": "yarn clean && rollup -c --bundleConfigAsCjs",
     "watch": "babel ./src -d . --ignore __mocks__,__tests__,**/*.test.js --watch",
-    "prepare": "npm run build",
-    "prepublishOnly": "node ./tools/build.js",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn build",
     "prettier": "prettier -c",
     "push-release": "git push origin master && git push --tags",
     "dtslint": "dtslint types",

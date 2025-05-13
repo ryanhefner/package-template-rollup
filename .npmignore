@@ -1,6 +1,5 @@
 # Build / Test files
 coverage
-tools
 **/*.test.js
 
 # Docs / Site
@@ -8,5 +7,4 @@ docs
 site
 
 # Configs
-src/.babelrc
 rollup.config.js
